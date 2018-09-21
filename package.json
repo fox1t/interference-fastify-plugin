@@ -1,7 +1,6 @@
 {
   "name": "interference-fastify-plugin",
   "version": "0.2.1",
-  "private": true,
   "description": "A fastify plugin that knows how to handle Interference errors.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
