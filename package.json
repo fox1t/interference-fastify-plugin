@@ -1,8 +1,8 @@
 {
-  "name": "typescript-lib-starter",
+  "name": "interference-fastify-plugin",
   "version": "0.2.0",
   "private": true,
-  "description": "Put here a lib's description.",
+  "description": "A fastify plugin that knows how to handle Interference errors.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
