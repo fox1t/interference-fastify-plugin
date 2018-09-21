@@ -1,6 +1,6 @@
 {
   "name": "typescript-lib-starter",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Put here a lib's description.",
   "main": "./lib/index.js",
