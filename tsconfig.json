@@ -5,7 +5,6 @@
     "target": "es5",
     "module": "commonjs",
     "outDir": "lib",
-    "rootDir": "./src",
     "pretty": true,
     "noEmitOnError": true,
     "experimentalDecorators": true,
@@ -28,6 +27,6 @@
     "__tests__"
   ],
   "include": [
-    "**/*.ts"
+    "./src/**/*.ts"
   ]
 }
