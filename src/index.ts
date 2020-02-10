@@ -16,7 +16,7 @@ function errorHandler(error: any, request: FastifyRequest, reply: FastifyReply<a
         error: error.type,
         message: error.message,
         statusCode,
-        details: error.details,
+        details: error.validation || error.details,
       }
     : {
         error: error.type,
