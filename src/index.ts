@@ -1,33 +1,37 @@
+import { FastifyRequest, FastifyReply, FastifyInstance } from 'fastify'
 import fp from 'fastify-plugin'
-import { FastifyError } from 'fastify'
 
-type InterferenceError = FastifyError & { type: string; details: unknown }
+function errorHandler(error: any, request: FastifyRequest, reply: FastifyReply<any>) {
+  const statusCode = error.validation ? 400 : error.statusCode || 500
+  const isClientError = statusCode >= 400 && statusCode < 500
 
-export default fp(function protovisionPlugin(fastify, _, next) {
-  fastify.setErrorHandler(function(error: InterferenceError, req, reply) {
-    if (error.validation) {
-      error.statusCode = 400
-      error.type = 'DOCUMENT_VALIDATION_ERROR'
-      error.details = error.validation
-    }
-    const statusCode = error.statusCode || 500
+  if (isClientError) {
+    request.log.info(error)
+  } else {
+    request.log.error(error)
+  }
 
-    req.log.error(error)
-    const response =
-      statusCode !== 500
-        ? {
-            error: error.type,
-            message: error.message,
-            statusCode,
-            details: error.details,
-          }
-        : {
-            error: error.type,
-            message: 'Something went wrong. Try again later.',
-            statusCode,
-          }
+  const response = isClientError
+    ? {
+        error: error.type,
+        message: error.message,
+        statusCode,
+        details: error.details,
+      }
+    : {
+        error: error.type,
+        message: 'Something went wrong. Try again later.',
+        statusCode,
+      }
 
-    reply.code(statusCode).send(response)
-  })
-  next()
+  reply.code(statusCode).send(response)
+}
+
+async function interferencePlugin(fastify: FastifyInstance) {
+  fastify.setErrorHandler(errorHandler)
+}
+
+export default fp(interferencePlugin, {
+  name: 'interference-fastify-plugin',
+  fastify: '^2.0.0',
 })
