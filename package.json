@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fox1t/typescript-lib-starter.git"
+    "url": "https://github.com/fox1t/interference-fastify-plugin.git"
   },
   "keywords": [],
   "author": "Maksim Sinik <maksim@sinik.it>",
@@ -25,7 +25,10 @@
   "bugs": {
     "url": "https://github.com/fox1t/typescript-lib-starter/issues"
   },
-  "homepage": "https://github.com/fox1t/typescript-lib-starter#readme",
+  "homepage": "https://github.com/fox1t/interference-fastify-plugin",
+  "dependencies": {
+    "fastify-plugin": "~1.6.0"
+  },
   "devDependencies": {
     "@types/jest": "~24.0.15",
     "@types/node": "~12.0.8",
@@ -47,8 +50,5 @@
     "hooks": {
       "pre-commit": "npm run build"
     }
-  },
-  "dependencies": {
-    "fastify-plugin": "~1.6.0"
   }
 }
