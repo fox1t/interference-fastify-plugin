@@ -37,7 +37,7 @@ export interface InterferencePluginOptions {
 }
 
 export default fp(
-  async function interferencePlugin(fastify, opts: InterferencePluginOptions = {}) {
+  async function interferencePlugin(fastify, opts: InterferencePluginOptions) {
     fastify.setErrorHandler(errorHandler)
     fastify.decorateReply('httpCodes', opts.codes ?? {})
   },
