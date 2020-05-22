@@ -2,7 +2,7 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "declaration": true,
-    "target": "es5",
+    "target": "es2017",
     "module": "commonjs",
     "outDir": "lib",
     "pretty": true,
