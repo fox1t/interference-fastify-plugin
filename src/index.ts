@@ -5,12 +5,11 @@ import fp from 'fastify-plugin'
 function errorHandler(error: any, request: FastifyRequest, reply: FastifyReply<ServerResponse>) {
   const statusCode = error.validation ? 400 : reply.httpCodes[error.type] || error.statusCode || 500
   const isClientError = statusCode >= 400 && statusCode < 500
-  error.statusCode = statusCode // logs and returns more precise status code, if present
 
   if (isClientError) {
-    request.log.info(error)
+    request.log.info({ ...error, statusCode })
   } else {
-    request.log.error(error)
+    request.log.error({ ...error, statusCode })
   }
 
   const response = isClientError
