@@ -11,8 +11,8 @@ function errorHandler(
   // Handle exotic errors
   if (!(error instanceof Error)) {
     error = Interference({
-      type: "GENERIC_ERROR",
-      message: "An error occurred"
+      type: 'GENERIC_ERROR',
+      message: 'An error occurred',
     })
   }
 
