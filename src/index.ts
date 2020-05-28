@@ -8,6 +8,15 @@ function errorHandler(
   request: FastifyRequest,
   reply: FastifyReply<any>,
 ) {
+  // Handle exotic errors
+  if (!(error instanceof Error)) {
+    error = Interference({
+      type: "GENERIC_ERROR",
+      message: "An error occurred"
+    })
+  }
+
+  // Handle JSON schema validation errors
   if (error.validation) {
     error = Interference({
       type: 'VALIDATION_ERROR',
