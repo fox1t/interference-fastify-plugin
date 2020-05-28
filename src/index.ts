@@ -1,6 +1,6 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
 import fp from 'fastify-plugin'
-import { isInterference } from 'interference'
+import Interference, { isInterference } from 'interference'
 
 function errorHandler(
   this: FastifyInstance,
@@ -8,10 +8,17 @@ function errorHandler(
   request: FastifyRequest,
   reply: FastifyReply<any>,
 ) {
+  if (error.validation) {
+    error = Interference({
+      type: 'VALIDATION_ERROR',
+      message: error.message,
+      details: error.validation,
+      statusCode: this.interference.get('VALIDATION_ERROR') || 400
+    })
+  }
+
   const statusCode: number = isInterference(error)
     ? error.statusCode || this.interference.get(error.type) || 500
-    : error.validation
-    ? 400
     : 500
 
   const isClientError = statusCode >= 400 && statusCode < 500
@@ -28,13 +35,6 @@ function errorHandler(
       error: error.type,
       message: error.message,
       details: error.details,
-      statusCode,
-    }
-  } else if (error.validation) {
-    response = {
-      error: 'INVALID_REQUEST',
-      message: error.message,
-      details: error.validation,
       statusCode,
     }
   } else {
