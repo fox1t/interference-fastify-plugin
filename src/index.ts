@@ -13,13 +13,14 @@ function errorHandler(
       type: 'VALIDATION_ERROR',
       message: error.message,
       details: error.validation,
-      statusCode: this.interference.get('VALIDATION_ERROR') || 400
+      statusCode: this.interference.get('VALIDATION_ERROR') || 400,
     })
   }
 
-  const statusCode: number = isInterference(error)
-    ? error.statusCode || this.interference.get(error.type) || 500
-    : 500
+  const statusCode: number =
+    (isInterference(error)
+      ? error.statusCode || this.interference.get(error.type)
+      : this.interference.get('GENERIC_ERROR')) || 500
 
   const isClientError = statusCode >= 400 && statusCode < 500
 
