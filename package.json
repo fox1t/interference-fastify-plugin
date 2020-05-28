@@ -27,11 +27,12 @@
   },
   "homepage": "https://github.com/fox1t/interference-fastify-plugin",
   "dependencies": {
-    "fastify-plugin": "^1.6.1"
+    "fastify-plugin": "^1.6.1",
+    "interference": "^2.0.0"
   },
   "devDependencies": {
     "@types/jest": "^25.2.3",
-    "@types/node": "^14.0.4",
+    "@types/node": "^14.0.5",
     "fastify": "^2.14.1",
     "husky": "^4.2.5",
     "jest": "^26.0.1",
