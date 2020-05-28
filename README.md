@@ -1,5 +1,2 @@
 # interference-fastify-plugin
-A fastify plugin that knows how to handle Interference errors
-
-## REF
-[interference](https://www.npmjs.com/package/interference)
+Fastify plugin that set [errorHandler](https://www.fastify.io/docs/v1.13.x/Server/#seterrorhandler) that knows how to handle [Interference](https://www.npmjs.com/package/interference) errors.
