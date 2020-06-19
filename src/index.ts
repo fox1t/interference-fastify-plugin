@@ -30,13 +30,13 @@ function errorHandler(
     (isInterference(error)
       ? error.statusCode || this.interference.get(error.type)
       : this.interference.get('GENERIC_ERROR')) || 500
+  error.statusCode = statusCode
 
   const isClientError = statusCode >= 400 && statusCode < 500
-
   if (isClientError) {
-    request.log.info({ ...error, statusCode })
+    request.log.info(error)
   } else {
-    request.log.error({ ...error, statusCode })
+    request.log.error(error)
   }
 
   let response: any
