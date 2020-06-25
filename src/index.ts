@@ -60,8 +60,20 @@ function errorHandler(
 }
 
 export default fp(
-  async function interferencePlugin(fastify) {
-    fastify.decorate('interference', new Map<string, number>())
+  async function interferencePlugin(
+    fastify,
+    { codes }: { codes: Record<string, number> | Map<string, number> } = {
+      codes: new Map<string, number>(),
+    },
+  ) {
+    let errors: Map<string, number>
+
+    if (codes instanceof Map) {
+      errors = codes
+    } else {
+      errors = new Map<string, number>(Object.entries(codes ?? {}))
+    }
+    fastify.decorate('interference', errors)
     fastify.setErrorHandler(errorHandler.bind(fastify))
   },
   {
