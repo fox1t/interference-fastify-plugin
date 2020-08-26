@@ -27,22 +27,22 @@
   },
   "homepage": "https://github.com/fox1t/interference-fastify-plugin",
   "dependencies": {
-    "fastify-plugin": "^1.6.1",
-    "interference": "^2.0.0"
+    "fastify-plugin": "^2.3.2",
+    "interference": "^2.0.1"
   },
   "devDependencies": {
-    "@types/jest": "^25.2.3",
-    "@types/node": "^14.0.5",
-    "fastify": "^2.14.1",
+    "@types/jest": "^26.0.10",
+    "@types/node": "^14.6.0",
+    "fastify": "^3.3.0",
     "husky": "^4.2.5",
-    "jest": "^26.0.1",
+    "jest": "^26.4.2",
     "npm-run-all": "~4.1.5",
-    "prettier": "^2.0.5",
+    "prettier": "^2.1.1",
     "rimraf": "^3.0.2",
-    "ts-jest": "^26.0.0",
-    "tslint": "^6.1.2",
+    "ts-jest": "^26.3.0",
+    "tslint": "^6.1.3",
     "tslint-config-prettier": "~1.18.0",
-    "typescript": "^3.9.3"
+    "typescript": "^4.0.2"
   },
   "files": [
     "/lib"
