@@ -6,7 +6,7 @@ function errorHandler(
   this: FastifyInstance,
   error: any,
   request: FastifyRequest,
-  reply: FastifyReply<any>,
+  reply: FastifyReply,
 ) {
   // Handle exotic errors
   if (!(error instanceof Error)) {
@@ -78,7 +78,7 @@ export default fp(
   },
   {
     name: 'interference-fastify-plugin',
-    fastify: '^2.0.0',
+    fastify: '^3.0.0',
   },
 )
 
